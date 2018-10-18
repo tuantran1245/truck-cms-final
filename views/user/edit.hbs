@@ -1,29 +1,36 @@
 <div class="col-md-4 col-md-offset-2">
-	<h2>Input User</h2>
+	<h2>Thêm người dùng</h2>
 	<form action="/users/{{id}}/edit?_method=PUT" method="post" class="form" enctype="multipart/form-data">
 		<div class="form-group">
-			<label for="firstname">First Name</label>
-			<input type="text" name="firstname" id="firstname" value="{{first_name}}" class="form-control">
-		</div>
-		<div class="form-group">
-			<label for="lastname">Last Name</label>
-			<input type="text" name="lastname" id="lastname" value="{{last_name}}" class="form-control">
+			<label for="fullName">Họ và tên</label>
+			<input type="text" name="fullName" id="fullName" value="{{fullName}}" class="form-control">
 		</div>
 		<div class="form-group">
 			<label for="email">Email</label>
 			<input type="email" name="email" id="email" value="{{email}}" class="form-control">
 		</div>
 		<div class="form-group">
-			<label for="photo">Photo</label>
-			<input type="file" class="form-control" name="photo" id="photo">
-			<input type="hidden" value="{{photo}}" name="old_photo">
+			<label for="dob">Ngày sinh</label>
+			<input type="text" name="dob" id="dob" value="{{dob}}" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="phone">SĐT</label>
+			<input type="text" id="phone" name="phone" value="{{phone}}" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="address">Địa chỉ</label>
+			<input type="text" id="address" name="address" value="{{address}}" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="identityMumber">Số CMND</label>
+			<input type="text" id="identityNumber" name="identityNumber" value="{{identityNumber}}" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="licenseNumber">Số giấy phép lái xe</label>
+			<input type="text" id="licenseNumber" name="licenseNumber" value="{{licenseNumber}}" class="form-control"> >
 		</div>
 		<div class="form-group">
 			<button class="btn btn-primary" type="submit">Save User</button>
 		</div>
 	</form>
-</div>
-
-<div class="col-md-4">
-	<img src="/{{photo}}" alt="" class="img-responsive">
 </div>

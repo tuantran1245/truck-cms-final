@@ -1,24 +1,36 @@
 <div class="col-md-4 col-md-offset-4">
-	<h2>Input User</h2>
+	<h2>Thêm người dùng</h2>
 	<form action="/users" method="post" class="form" enctype="multipart/form-data">
 		<div class="form-group">
-			<label for="firstname">First Name</label>
-			<input type="text" name="firstname" id="firstname" class="form-control">
-		</div>
-		<div class="form-group">
-			<label for="lastname">Last Name</label>
-			<input type="text" name="lastname" id="lastname" class="form-control">
+			<label for="fullName">Họ và tên</label>
+			<input type="text" name="fullName" id="fullName" class="form-control">
 		</div>
 		<div class="form-group">
 			<label for="email">Email</label>
 			<input type="email" name="email" id="email" class="form-control">
 		</div>
 		<div class="form-group">
-			<label for="photo">Photo</label>
-			<input type="file" class="form-control" name="photo" id="photo">
+			<label for="dob">Ngày sinh</label>
+			<input type="text" name="dob" id="dob" class="form-control">
 		</div>
 		<div class="form-group">
-			<button class="btn btn-primary" type="submit">Save User</button>
+			<label for="phone">SĐT</label>
+			<input type="text" id="phone" name="phone" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="address">Địa chỉ</label>
+			<input type="text" id="address" name="address" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="identityNumber">Số CMND</label>
+			<input type="text" id="identityNumber" name="identityNumber" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="licenseNumber">Số giấy phép lái xe</label>
+			<input type="text" id="licenseNumber" name="licenseNumber" class="form-control">
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary" type="submit">Lưu thông tin</button>
 		</div>
 	</form>
 </div>
