@@ -1,5 +1,6 @@
 <div class="col-md-4 col-md-offset-2">
 	<h2>Thông tin người dùng</h2>
+	{{#with user}}
 	<p>
 		<small>Họ và tên</small><br>
 		<strong>{{full_name}}</strong><br>
@@ -14,11 +15,11 @@
 	</p>
 	<p>
 		<small>SĐT</small><br>
-		<strong>{{dob}}</strong><br>
+		<strong>{{phone}}</strong><br>
 	</p>
 	<p>
 		<small>Địa chỉ</small><br>
-		<strong>{{dob}}</strong><br>
+		<strong>{{address}}</strong><br>
 	</p>
 	<p>
 		<small>Số CMND</small><br>
@@ -28,7 +29,8 @@
 		<small>Số giấy phép lái xe</small><br>
 		<strong>{{license_number}}</strong>
 	</p>
+	{{/with}}
 </div>
-<div class="col-md-4">
+<!--div class="col-md-4">
 	<img src="/{{photo}}" alt="{{first_name}} {{last_name}}" class="img-responsive">
-</div>
+</div-->

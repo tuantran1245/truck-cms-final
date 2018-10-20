@@ -1,6 +1,8 @@
 <div class="col-md-4 col-md-offset-2">
 	<h2>Thêm người dùng</h2>
+	{{#user}}
 	<form action="/users/{{id}}/edit?_method=PUT" method="post" class="form" enctype="multipart/form-data">
+		<input type="hidden" name="_method" value="put"/>
 		<div class="form-group">
 			<label for="full_name">Họ và tên</label>
 			<input type="text" name="full_name" id="full_name" value="{{full_name}}" class="form-control">
@@ -30,7 +32,8 @@
 			<input type="text" id="license_number" name="license_number" value="{{license_number}}" class="form-control">
 		</div>
 		<div class="form-group">
-			<button class="btn btn-primary" type="submit">Save User</button>
+			<button class="btn btn-primary" type="submit">Lưu thông tin</button>
 		</div>
+		{{/user}}
 	</form>
 </div>

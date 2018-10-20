@@ -14,23 +14,23 @@
 			</tr>
 		</thead>
 		<tbody>
-			{{#each users}}
+			{{#users}}
 				<tr>
-					<td>{{dataValues.id}}</td>
-					<td>{{dataValues.full_name}}</td>
-					<td>{{dataValues.email}}</td>
-					<td>{{dataValues.dob}}</td>
-					<td>{{dataValues.phone}}</td>
-					<td>{{dataValues.address}}</td>
-					<td>{{dataValues.identity_number}}</td>
-					<td>{{dataValues.license_number}}</td>
+					<td>{{id}}</td>
+					<td>{{full_name}}</td>
+					<td>{{email}}</td>
+					<td>{{dob}}</td>
+					<td>{{phone}}</td>
+					<td>{{address}}</td>
+					<td>{{identity_number}}</td>
+					<td>{{license_number}}</td>
 					<td>
-						<a href="/users/{{dataValues.id}}/detail" class="btn btn-success btn-sm">Xem</a>
-						<a href="/users/{{dataValues.id}}/edit" class="btn btn-warning btn-sm">Sửa</a>
-						<a href="/users/{{dataValues.id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">Xoá</a>
+						<a href="/users/{{id}}/detail" class="btn btn-success btn-sm">Xem</a>
+						<a href="/users/{{id}}/edit" class="btn btn-warning btn-sm">Sửa</a>
+						<a href="/users/{{id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this this?')">Xoá</a>
 					</td>
 				</tr>
-			{{/each}}
+			{{/users}}
 		</tbody>
 	</table>
 </div>
