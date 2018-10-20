@@ -1,28 +1,172 @@
 <div class="col-md-4 col-md-offset-2">
-	<h2>Biodata</h2>
+	<h2>Thông tin chi tiết về xe</h2>
 	<p>
-		<small>First Name</small><br>
-		<strong>{{user.irst_name}}</strong><br>
+		<small>Loại xe</small><br>
+		<strong>{{vehicle.type}}</strong><br>
 	</p>
 	<p>
-		<small>Last Name</small><br>
-		<strong>{{user.last_name}}</strong><br>
+		<small>Nhãn hiệu xe</small><br>
+		<strong>{{vehicle.brand}}</strong><br>
 	</p>
 	<p>
-		<small>Email</small><br>
-		<strong>{{user.email}}</strong><br>
+		<small>Model</small><br>
+		<strong>{{vehicle.model}}</strong><br>
 	</p>
 	<p>
-		<small>Register Date</small><br>
-		<strong>{{user.date_register}}</strong><br>
+		<small>Năm sản xuất</small><br>
+		<strong>{{vehicle.year}}</strong><br>
 	</p>
 	<p>
-		<small>Created Date</small><br>
-		<strong>{{user.createdAt}}</strong><br>
+		<small>Mô tả</small><br>
+		<strong>{{vehicle.description}}</strong>
 	</p>
 	<p>
-		<small>Updated Date</small><br>
-		<strong>{{user.updatedAt}}</strong>
+		<small>Kích thước tổng thể</small><br>
+		<strong>{{vehicle.size}}</strong>
+	</p>
+	<p>
+		<small>Chiều dài cơ sở</small><br>
+		<strong>{{vehicle.base_lenght}}</strong>
+	</p>
+	<p>
+		<small>Khoảng sáng gầm xe</small><br>
+		<strong>{{vehicle.ground_space}}</strong><br>
+	</p>
+	<p>
+		<small>Bán kính vòng quay tối thiểu</small><br>
+		<strong>{{vehicle.min_circle_radius}}</strong><br>
+	</p>
+	<p>
+		<small>Tổng trọng lượng</small><br>
+		<strong>{{vehicle.weight_total}}</strong><br>
+	</p>
+	<p>
+		<small>Tự trọng</small><br>
+		<strong>{{vehicle.weight_self}}</strong><br>
+	</p>
+	<p>
+		<small>Tốc độ tối đa</small><br>
+		<strong>{{vehicle.max_speed}}</strong><br>
+	</p>
+	<p>
+		<small>Khả năng vượt đốc</small><br>
+		<strong>{{vehicle.slope_capacity}}</strong><br>
+	</p>
+	<p>
+		<small>Số ghế ngồi</small><br>
+		<strong>{{vehicle.seat_number}}</strong><br>
+	</p>
+	<p>
+		<small>Tên động cơ</small><br>
+		<strong>{{vehicle.engine_name}}</strong><br>
+	</p>
+	<p>
+		<small>Loại động cơ</small><br>
+		<strong>{{vehicle.engine_type}}</strong><br>
+	</p>
+	<p>
+		<small>Dung tích xy lanh</small><br>
+		<strong>{{vehicle.piston_volume}}</strong><br>
+	</p>
+	<p>
+		<small>Tỷ số nén</small><br>
+		<strong>{{vehicle.compress_ratio}}</strong><br>
+	</p>
+	<p>
+		<small>Công suất tối đa</small><br>
+		<strong>{{vehicle.max_power}}</strong><br>
+	</p>
+	<p>
+		<small>Mô men xoắn cực đại</small><br>
+		<strong>{{vehicle.max_momen}}</strong><br>
+	</p>
+	<p>
+		<small>Vị trí động cơ</small><br>
+		<strong>{{vehicle.engine_position}}</strong><br>
+	</p>
+	<p>
+		<small>Dung tích thùng nhiên liệu</small><br>
+		<strong>{{vehicle.fuel_volume}}</strong><br>
+	</p>
+	<p>
+		<small>Ly hợp</small><br>
+		<strong>{{vehicle.clutch}}</strong><br>
+	</p>
+	<p>
+		<small>Loại hộp số</small><br>
+		<strong>{{vehicle.gear_box_type}}</strong><br>
+	</p>
+	<p>
+		<small>Phanh chính</small><br>
+		<strong>{{vehicle.main_brake}}</strong><br>
+	</p>
+	<p>
+		<small>Phanh phụ</small><br>
+		<strong>{{vehicle.vice_brake}}</strong><br>
+	</p>
+	<p>
+		<small>Phanh tay</small><br>
+		<strong>{{vehicle.hand_brake}}</strong><br>
+	</p>
+	<p>
+		<small>Hệ thống lái</small><br>
+		<strong>{{vehicle.steer_system}}</strong><br>
+	</p>
+	<p>
+		<small>Hệ thống treo</small><br>
+		<strong>{{vehicle.suspension}}</strong><br>
+	</p>
+	<p>
+		<small>Kích thước lốp</small><br>
+		<strong>{{vehicle.wheel_size}}</strong><br>
+	</p>
+	<p>
+		<small>Điều hoà nhiệt dộ</small><br>
+		<strong>{{vehicle.air_conditioner}}</strong><br>
+	</p>
+	<p>
+		<small>Đèn tín hiệu</small><br>
+		<strong>{{vehicle.sight_light}}</strong><br>
+	</p>
+	<p>
+		<small>Hệ thống âm thanh</small><br>
+		<strong>{{vehicle.audio_system}}</strong><br>
+	</p>
+	<p>
+		<small>Khoang lái</small><br>
+		<strong>{{vehicle.driver_room}}</strong><br>
+	</p>
+	<p>
+		<small>Khoang hành khách</small><br>
+		<strong>{{vehicle.passenger_room}}</strong><br>
+	</p>
+	<p>
+		<small>Cửa lên xuống cho hành khách</small><br>
+		<strong>{{vehicle.passenger_door}}</strong><br>
+	</p>
+	<p>
+		<small>Kính hông</small><br>
+		<strong>{{vehicle.side_glass}}</strong><br>
+	</p>
+	<p>
+		<small>Sàn xe</small><br>
+		<strong>{{vehicle.floor}}</strong><br>
+	</p>
+	<p>
+		<small>Loại sơn</small><br>
+		<strong>{{vehicle.paint_type}}</strong><br>
+	</p>
+	<p>
+		<small>Trang bị kèm theo</small><br>
+		<strong>{{vehicle.other_item}}</strong><br>
+	</p>
+	<p>
+		<small>Tiêu đề</small><br>
+		<strong>{{article.title}}</strong><br>
+	</p>
+	<p>
+		<small>Nội dung</small><br>
+		<strong>{{article.content}}</strong><br>
 	</p>
 </div>
 <!--div class="col-md-4">

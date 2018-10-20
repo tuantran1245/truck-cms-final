@@ -139,14 +139,14 @@ module.exports = {
 	// },
 
 	delete: (req, res) => {
-		User.findById(req.params.id)
+		return User.findById(req.params.id)
 			.then(user => {
 				if (!user) {
 					return res.status(400).send({
 						message: 'User Not Found',
 					});
 				}
-				User.destroy({
+				return User.destroy({
 					where: {
 						id: user.id
 					}
