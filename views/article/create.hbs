@@ -1,22 +1,167 @@
 <div class="col-md-4 col-md-offset-4">
 	<h2>Input User</h2>
-	<form action="/users" method="post" class="form" enctype="multipart/form-data">
+	<form action="/vehicles" method="post" class="form" enctype="multipart/form-data">
 		<div class="form-group">
-			<label for="firstname">First Name</label>
-			<input type="text" name="firstname" id="firstname" class="form-control">
+			<label for="type">Chủng loại xe</label>
+			<input type="text" name="type" id="type" class="form-control">
 		</div>
 		<div class="form-group">
-			<label for="lastname">Last Name</label>
+			<label for="brand">Nhãn hiệu xe</label>
 			<input type="text" name="lastname" id="lastname" class="form-control">
 		</div>
 		<div class="form-group">
-			<label for="email">Email</label>
-			<input type="email" name="email" id="email" class="form-control">
+			<label for="model">Model</label>
+			<input type="model" name="model" id="model" class="form-control">
 		</div>
 		<div class="form-group">
-			<label for="photo">Photo</label>
-			<input type="file" class="form-control" name="photo" id="photo">
+			<label for="year">Năm sản suất</label>
+			<input type="year" name="year" id="year" class="form-control">
 		</div>
+		<div class="form-group">
+			<label for="description">Mô tả</label>
+			<input type="description" name="description" id="description" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="size">Kích thước tổng thể</label>
+			<input type="size" name="sỉze" id="size" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="base_lenght">Chiều dài cơ sở</label>
+			<input type="base_lenght" name="base_lenght" id="base_lenght" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="ground_space">Khoảng sáng gầm xe</label>
+			<input type="ground_space" name="ground_space" id="ground_space" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="min_circle_radius">Bán kính vòng quay tối thiểu</label>
+			<input type="min_circle_radius" name="min_circle_radius" id="min_circle_radius" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="weight_total">Tổng trọng lượng</label>
+			<input type="weight_total" name="weight_total" id="weight_total" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="weight_self">Tự trọng</label>
+			<input type="weight_self" name="weight_self" id="weight_self" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="max_speed">Tốc dộ tối đa</label>
+			<input type="max_speed" name="max_speed" id="max_speed" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="slope_capacity">Khả năng vượt dốc</label>
+			<input type="slope_capacity" name="slope_capacity" id="slope_capacity" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="seat_number">Số ghế ngồi</label>
+			<input type="seat_number" name="seat_number" id="seat_number" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="engine_name">Tên động cơ</label>
+			<input type="engine_name" name="engine_name" id="engine_name" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="engine_type">Loại động cơ</label>
+			<input type="engine_type" name="engine_type" id="engine_type" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="piston_volume">Dung tích xy lanh</label>
+			<input type="piston_volume" name="piston_volume" id="piston_volume" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="compress_ratio">Tỷ số nén</label>
+			<input type="compress_ratio" name="compress_ratio" id="compress_ratio" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="max_power">Công suất tối đa</label>
+			<input type="max_power" name="max_power" id="max_power" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="max_momen">Momen xoắn cực đại</label>
+			<input type="max_momen" name="max_momen" id="max_momen" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="engine_position">Vị trí động cơ</label>
+			<input type="engine_position" name="engine_position" id="engine_position" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="fuel_volume">Dung tích thùng nhiên liệu</label>
+			<input type="fuel_volume" name="fuel_volume" id="fuel_volume" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="clutch">Ly hợp</label>
+			<input type="clutch" name="clutch" id="clutch" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="gear_box_type">Loại hộp số</label>
+			<input type="gear_box_type" name="gear_box_type" id="gear_box_type" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="main_brake">Phanh chính</label>
+			<input type="main_brake" name="main_brake" id="main_brake" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="vice_brake">Phanh phụ</label>
+			<input type="vice_brake" name="vice_brake" id="vice_brake" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="hand_brake">Phanh tay</label>
+			<input type="hand_brake" name="hand_brake" id="hand_brake" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="steer_system">Hệ thống lái</label>
+			<input type="steer_system" name="steer_system" id="steer_system" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="suspension">Hệ thống treo</label>
+			<input type="suspension" name="suspension" id="suspension" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="wheel_size">Kích thước lốp</label>
+			<input type="wheel_size" name="wheel_size" id="wheel_size" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="air_conditioner">Điều hoà nhiệt độ</label>
+			<input type="air_conditioner" name="air_conditioner" id="air_conditioner" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="sight_light">Đèn tín hiệu</label>
+			<input type="sight_light" name="sight_light" id="sight_light" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="audio_system">Hệ thống âm thanh</label>
+			<input type="audio_system" name="audio_system" id="audio_system" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="driver_room">Khoang lái</label>
+			<input type="driver_room" name="driver_room" id="driver_room" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="passenger_room">Khoang hành khách</label>
+			<input type="passenger_room" name="passenger_room" id="passenger_room" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="passenger_door">Cửa lên xuống cho hành khách</label>
+			<input type="passenger_door" name="passenger_door" id="passenger_door" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="side_glass">Kính hông</label>
+			<input type="side_glass" name="side_glass" id="side_glass" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="floor">Sàn xe</label>
+			<input type="floor" name="floor" id="floor" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="paint_type">Loại sơn</label>
+			<input type="paint_type" name="paint_type" id="paint_type" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="other_item">Trang bị kèm theo</label>
+			<input type="other_item" name="other_item" id="other_item" class="form-control">
+		</div>
+		
 		<div class="form-group">
 			<button class="btn btn-primary" type="submit">Save User</button>
 		</div>
