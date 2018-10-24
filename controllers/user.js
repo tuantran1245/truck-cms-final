@@ -54,26 +54,11 @@ module.exports = {
 				identity_number: req.body.identity_number,
 				license_number: req.body.license_number
 			})
-			.then((user) => res.redirect('/users'))
+			.then((user) => {
+				res.redirect('/users')
+			})
 			.catch((error) => res.render('error', error));
 	},
-	//
-	// add: (full_name, email, dob, phone, address, identity_number, license_number, res) => {
-	// 	return User.create({
-	// 	  full_name: full_name,
-	// 	  email: email,
-	// 	  dob: dob,
-	// 	  phone: phone,
-	// 	  address: address,
-	// 	  identity_number: identity_number,
-	// 	  license_number: license_number
-	// 	}).then( () => {
-	// 		res.redirect('/users')
-	// 	}).catch((error) => {
-	// 		console.log(JSON.stringify(error, undefined, 2));
-	// 		return error;
-	// 	});
-	// 	},
 
 	edit: (req, res) => {
 		return User

@@ -145,11 +145,11 @@ module.exports = (sequelize, DataTypes) => {
         Vehicle.associate = function(models) {
             Vehicle.belongsTo(models.User, {
               foreignKey: 'user_id',
-              as: 'user'
+              //as: 'user'
             });
             Vehicle.hasMany(models.Article, {
               foreignKey: 'vehicle_id',
-              as: 'vehicle'
+              //as: 'vehicle'
             });
           };
 

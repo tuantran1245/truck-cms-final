@@ -1,6 +1,6 @@
 <div class="col-md-4 col-md-offset-4">
-	<h2>Input User</h2>
-	<form action="/vehicles" method="post" class="form" enctype="multipart/form-data">
+	<h2>Tạo bài viết</h2>
+	<form action="/articles" method="post" class="form" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="type">Chủng loại xe</label>
 			<input type="text" name="type" id="type" class="form-control">
@@ -161,9 +161,16 @@
 			<label for="other_item">Trang bị kèm theo</label>
 			<input type="other_item" name="other_item" id="other_item" class="form-control">
 		</div>
-		
 		<div class="form-group">
-			<button class="btn btn-primary" type="submit">Save User</button>
+			<label for="title">Tiêu đề bài viết</label>
+			<input type="title" name="title" id="title" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="content">Nội dung bài viết</label>
+			<input type="content" name="content" id="content" class="form-control">
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary" type="submit">Lưu bài viết</button>
 		</div>
 	</form>
 </div>

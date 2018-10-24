@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const articleController = require('../controllers/article');
 
-/* user Router */
+/* article Router */
 router.get('/', articleController.list);
 router.post('/', articleController.add);
 router.get('/:id/detail', articleController.getById);

@@ -38,15 +38,15 @@ module.exports = (sequelize, DataTypes) => {
     Article.associate = function (models) {
         Article.belongsTo(models.Vehicle, {
             foreignKey: 'vehicle_id',
-            as: 'vehicle'
+            //as: 'vehicle'
         });
         Article.belongsTo(models.User, {
             foreignKey: 'user_id',
-            as: 'user'
+            //as: 'user'
         });
         Article.hasMany(models.Image, {
             foreignKey: 'article_id',
-            as: 'image'
+           // as: 'image'
         });    
     };
     return Article;

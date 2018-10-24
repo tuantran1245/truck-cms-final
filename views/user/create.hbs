@@ -1,9 +1,9 @@
 <div class="col-md-4 col-md-offset-4">
 	<h2>Thêm người dùng</h2>
-	<form action="/users" method="post" class="form" enctype="multipart/form-data">
+	<form action="/users" method="post" class="form" > <!--enctype="multipart/form-data"-->
 		<div class="form-group">
-			<label for="fullName">Họ và tên</label>
-			<input type="text" name="fullName" id="fullName" class="form-control">
+			<label for="full_name">Họ và tên</label>
+			<input type="text" name="full_name" id="full_name" class="form-control">
 		</div>
 		<div class="form-group">
 			<label for="email">Email</label>
@@ -23,11 +23,11 @@
 		</div>
 		<div class="form-group">
 			<label for="identityNumber">Số CMND</label>
-			<input type="text" id="identityNumber" name="identityNumber" class="form-control">
+			<input type="text" id="identity_number" name="identity_number" class="form-control">
 		</div>
 		<div class="form-group">
 			<label for="licenseNumber">Số giấy phép lái xe</label>
-			<input type="text" id="licenseNumber" name="licenseNumber" class="form-control">
+			<input type="text" id="license_number" name="license_number" class="form-control">
 		</div>
 		<div class="form-group">
 			<button class="btn btn-primary" type="submit">Lưu thông tin</button>
