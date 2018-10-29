@@ -1,5 +1,7 @@
 const Article = require('../models').Article;
 const Vehicle = require('../models').Vehicle;
+const Image = require('../models').Image;
+const fs = require('fs');
 
 module.exports = {
     list: (req, res) => {
@@ -25,7 +27,9 @@ module.exports = {
                     message: 'Vehicle Not Found'
                 });
             }
-            res.render('article/show', { article: article, vehicle: vehicle });
+            let image = await Image.findOne({ where: {article_id: article.id} });
+            console.log(image.url);
+            res.render('article/show', { article: article, vehicle: vehicle, image: image });
         } catch (error) {
             res.render('error', error);
         }
@@ -92,7 +96,16 @@ module.exports = {
                         content: req.body.content || 'temp default value'
                     })
                     .then((article) => {
-                        res.redirect('/articles/' + article.id + '/detail')
+                        //console.log("file name: " + req.file.filename + " " + !req.file);
+                        let imageFileName = req.file.filename || 'placeholder.jpg'
+
+                        return Image
+                        .create({
+                            article_id: article.id,
+                            url: '/uploads/photo/' + imageFileName
+                        }).then(() => {
+                            res.redirect('/articles/' + article.id + '/detail')
+                        })
                     })
             })
             .catch((error) => res.render('error', error))
@@ -191,6 +204,7 @@ module.exports = {
                         content: req.body.content || 'temp default value'
                     })
                     .then((article) => {
+                        return 
                         res.redirect('/articles/' + article.id + '/detail')
                     })
             })
