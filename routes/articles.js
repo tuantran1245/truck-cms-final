@@ -23,7 +23,7 @@ router.get('/', articleController.list);
 router.post('/', upload.single('photo'), articleController.add);
 router.get('/:id/detail', articleController.getById);
 router.get('/:id/edit', articleController.edit);
-router.put('/:id/update/', upload.single('photo'), articleController.update);
+router.put('/:id/update', upload.single('photo'), articleController.update);
 router.get('/:id/delete', articleController.delete);
 
 router.get('/new', (req, res) => {
