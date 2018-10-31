@@ -164,6 +164,7 @@
 		</div>
 		{{/vehicle}}
 		{{#article}}
+		<input type="hidden" value="{{id}}" name="article_id">
 		<div class="form-group">
 			<label for="title">Tiêu đề bài viết</label>
 			<input type="title" name="title" id="title" value="{{title}} " class="form-control">
@@ -176,14 +177,17 @@
 			<button class="btn btn-primary" type="submit">Lưu bài viết</button>
 		</div>
 		{{/article}}
+		{{#image}}
 		<div class="col-md-4">
-			<img src="{{image.url}}" class="img-responsive">
-			<input type="hidden" value="{{image.url}}" name="old_photo">
+			<input type="hidden" value="{{id}}" name="image_id">
+			<img src="{{url}}" class="img-responsive">
+			<input type="hidden" value="{{url}}" name="old_photo">
 		</div>
 		<div class="form-group">
 			<label for="photo">Upload ảnh mới</label>
 			<input type="file" class="form-control" name="photo" id="photo">
 		</div>
+		{{/image}}
 	</form>
 </div>
 

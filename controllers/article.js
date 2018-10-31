@@ -2,6 +2,7 @@ const Article = require('../models').Article;
 const Vehicle = require('../models').Vehicle;
 const Image = require('../models').Image;
 const fs = require('fs');
+const to = require('await-to-js').default;
 
 module.exports = {
     list: (req, res) => {
@@ -144,14 +145,9 @@ module.exports = {
         //     .catch((error) => res.render('error', error));
     },
 
-    update: (req, res) => {
+    update: async (req, res) => {
         console.log(req.params.id);
-        let vehicle = {
-            
-        };
-
-        Vehicle.update(
-            {
+        let newVehicleValue = {
             user_id: 1,
             type: req.body.type || 'temp default value',
             brand: req.body.brand || 'temp default value',
@@ -193,40 +189,92 @@ module.exports = {
             floor: req.body.floor || 'temp default value',
             paint_type: req.body.paint_type || 'temp default value',
             other_item: req.body.other_item || 'temp default value'
-            }, {
+        };
+
+        var vehicle, article, image, err;
+        [err, vehicle] = await to(Vehicle.update(newVehicleValue, {
             where: {
                 id: req.params.id
             }
-        }).then((vehicle) => {
-            console.log(JSON.stringify(2, undefined, vehicle));
-            Article.update({
-                user_id: vehicle.user_id,
-                title: req.body.title || 'temp default value',
-                content: req.body.content || 'temp default value'
+        })
+        ); // ham update tra ve so luong row da duoc update, ko tra ve opject
+        if (!vehicle) console.log("vehicle not found");
+        if (err) console.log("error: " + JSON.stringify(2, undefined, err));
+
+        var newArticleValue = {
+            title: req.body.title || 'temp default value',
+            content: req.body.content || 'temp default value'
+        }
+
+        if (Article)
+            [err, article] = await to(Article.update(
+                newArticleValue, {
+                    where: {
+                        id: req.body.article_id,
+                        // user_id: vehicle.user_id,
+                        // vehicle_id: req.params.id
+                    }
+                })
+            );
+        if (!article) console.log("article update failed!");
+        if (err) console.log("error: " + JSON.stringify(2, undefined, err));
+
+        if (req.file) {
+            if (req.body.old_photo !== '') {
+               // await fs.unlink('public/' + `${req.body.old_photo}`);
+            }
+            [err, image] = await to(Image.update({
+                url: 'uploads/photo/' + req.file.filename
             }, {
                     where: {
-                        vehicle_id: vehicle.id
+                        id: req.body.image_id
                     }
-                }).then((article) => {
-                    let imageFileName = req.file.filename || 'placeholder.jpg';
-                    Image.create({
-                        article_id: article.id,
-                        url: '/uploads/photo/' + imageFileName
-                    }).then(() => {
-                        // if user upload new photo, then remove old photo and save photo's name in database
-                        if (req.file) {
-                            // if old photo exists (old photo not empty) then unlink / remove the photo in directory
-                            if (req.body.old_photo !== '')
-                                fs.unlink(`public/ + ${req.body.old_photo}`).then(() => {
-                                    res.redirect('/articles/' + article.id + '/detail');
-                                });
-                        }
+                }
+            ));
+            if (image) res.redirect('/articles/' + req.body.article_id + '/detail');
+            else console.log("image update failed!");
+            if (err) console.log("error: " + JSON.stringify(2, undefined, err));
+        };
 
-                    })
-                });
-        }).catch((err) => {
-			res.render('error', err)
-		})
+        // [err, vehicle] = await to(Vehicle.findById(req.params.id));
+        // if (!vehicle) console.log("vehicle not found");
+        // if (err) console.log("error: " + JSON.stringify(2, undefined, err));
+
+
+        // Vehicle.update(newVehicleValue, {
+        //     where: {
+        //         id: req.params.id
+        //     }
+        // }).then((vehicle) => {
+        //     let vehicleInstance = await Vehicle.findById(req.params.id);
+        //     let newArticleValue = {
+        //         user_id: vehicleInstance.user_id,
+        //         title: req.body.title || 'temp default value',
+        //         content: req.body.content || 'temp default value'
+        //     }
+        //     Article.update(
+        //         newArticleValue, {
+        //             where: {
+        //                 vehicle_id: vehicle.id
+        //             }
+        //         }).then((article) => {
+        //             if (req.file) {
+        //                 // if old photo exists (old photo not empty) then unlink / remove the photo in directory
+        //                 if (req.body.old_photo !== '')
+        //                     fs.unlink(`public/ + ${req.body.old_photo}`).then(() => {
+        //                         Image.update({
+        //                             article_id: article.id,
+        //                             url: '/uploads/photo/' + imageFileName
+        //                         }).then(() => {
+        //                             res.redirect('/articles/' + article.id + '/detail');
+        //                         })
+        //                     });
+        //             }
+
+        //         });
+        // }).catch((err) => {
+        //     res.render('error', err)
+        // })
 
         /*return Vehicle
             .update({
