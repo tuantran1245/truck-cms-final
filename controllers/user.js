@@ -1,6 +1,6 @@
 const User = require('../models').User;
 const { validationResult } = require('express-validator/check');
-
+const to = require('await-to-js').default;
 module.exports = {
 	list: (req, res) => {
 		return User
@@ -66,10 +66,6 @@ module.exports = {
 	},
 
 	edit: (req, res) => {
-		const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.status(422).json({ errors: errors.array() })
-        }
 		return User
 			.findById(req.params.id)
 			.then((user) => {
@@ -92,28 +88,31 @@ module.exports = {
 	// },
 
 	update: async (req, res) => {
-		return User
-			.findById(req.params.id)
-			.then(user => {
-				if (!user) {
-					return res.status(404).send({
-						message: 'User Not Found',
-					});
-				}
-				return user
-					.update({
-						full_name: req.body.full_name,
-						email: req.body.email,
-						dob: req.body.dob,
-						phone: req.body.phone,
-						address: req.body.address,
-						identity_number: req.body.identity_number,
-						license_number: req.body.license_number
-					})
-					.then(() => res.status(200).send(user))
-					.catch((error) => res.render('error', error));
-			})
-			.catch((error) => res.render('error', error));
+		console.log(req.params.id);
+		console.log(req.body.full_name);
+		const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(422).json({ errors: errors.array() })
+		}
+		
+		var user, err;
+        [err, user] = await to(User.update({
+			full_name: req.body.full_name || 'temp default value',
+			email: req.body.email || 'temp default value',
+			dob: req.body.dob || 'temp default value',
+			phone: req.body.phone || 'temp default value',
+			address: req.body.address || 'temp default value',
+			identity_number: req.body.identity_number || 'temp default value',
+			license_number: req.body.license_number || 'temp default value'
+		}, {
+            where: {
+                id: req.params.id
+            }
+        })
+        ); // ham update tra ve so luong row da duoc update, ko tra ve opject
+		if (!user) console.log("user not found");
+		else res.redirect('/users/' + req.params.id + '/detail');
+        if (err) console.log("error: " + JSON.stringify(2, undefined, err));
 	},
 
 	// update: (id,full_name, email, dob, phone, address, identity_number, license_number) => {
