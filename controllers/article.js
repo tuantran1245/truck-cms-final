@@ -234,6 +234,8 @@ module.exports = {
             if (image) res.redirect('/articles/' + req.body.article_id + '/detail');
             else console.log("image update failed!");
             if (err) console.log("error: " + JSON.stringify(2, undefined, err));
+        } else {
+            res.redirect('/articles/' + req.body.article_id + '/detail');
         };
     },
 
