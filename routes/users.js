@@ -5,23 +5,23 @@ const { check } = require('express-validator/check');
 
 /* user Router */
 router.get('/', userController.list);
-router.post('/', [check('full_name').isLength({ min: 2 }),
-                 check('email').isEmail(),
-                 check('dob').isLength({ min: 5 }),
-                 check('phone').isLength({ min: 5 }),
-                 check('address').isLength({ min: 2 }),
-                 check('identity_number').isLength({ min: 5 }),
-                 check('license_number').isLength({ min: 5 })], 
+router.post('/',  [check('full_name').isLength({ min: 2 }).withMessage('Tên người dùng không hợp lệ'),
+                   check('email').isEmail().withMessage("Địa chỉ email không hợp lệ"),
+                   check('dob').matches(/^([0-2][0-9]|(3)[0-1])(\/)(([0-9])|((1)[0-2]))(\/)\d{4}$/i).withMessage("Ngày tháng năm sinh không hợp lệ"),
+                   check('phone').isLength({ min: 5 }).isNumeric().withMessage("Số điện thoại không hợp lệ"),
+                   check('address').isLength({ min: 2 }).withMessage("Địa chỉ không hợp lệ"),
+                   check('identity_number').isLength({ min: 5 }).isAlphanumeric().withMessage("Số CMND không hợp lệ"),
+                   check('license_number').isLength({ min: 5 }).isNumeric().withMessage("số giấy phép lái xe không hợp lệ")], 
                  userController.add);
 router.get('/:id/detail', userController.getById);
 router.get('/:id/edit', userController.edit);
-router.put('/:id/update/', [check('full_name').isLength({ min: 2 }),
-                            check('email').isEmail(),
-                            check('dob').isLength({ min: 5 }),
-                            check('phone').isLength({ min: 5 }),
-                            check('address').isLength({ min: 2 }),
-                            check('identity_number').isLength({ min: 5 }),
-                            check('license_number').isLength({ min: 5 })],  
+router.put('/:id/update/', [check('full_name').isLength({ min: 2 }).withMessage('Tên người dùng không hợp lệ'),
+                            check('email').isEmail().withMessage("Địa chỉ email không hợp lệ"),
+                            check('dob').matches(/^([0-2][0-9]|(3)[0-1])(\/)(([0-9])|((1)[0-2]))(\/)\d{4}$/i).withMessage("Ngày tháng năm sinh không hợp lệ"),
+                            check('phone').isLength({ min: 5 }).isNumeric().withMessage("Số điện thoại không hợp lệ"),
+                            check('address').isLength({ min: 2 }).withMessage("Địa chỉ không hợp lệ"),
+                            check('identity_number').isLength({ min: 5 }).isAlphanumeric().withMessage("Số CMND không hợp lệ"),
+                            check('license_number').isLength({ min: 5 }).isNumeric().withMessage("số giấy phép lái xe không hợp lệ")], 
                             userController.update);
 router.get('/:id/delete', userController.delete);
 
