@@ -1,4 +1,5 @@
 const User = require('../models').User;
+const { validationResult } = require('express-validator/check');
 
 module.exports = {
 	list: (req, res) => {
@@ -44,6 +45,10 @@ module.exports = {
 	// },
 
 	add: (req, res) => {
+		const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(422).json({ errors: errors.array() })
+        }
 		return User
 			.create({
 				full_name: req.body.full_name,
@@ -61,6 +66,10 @@ module.exports = {
 	},
 
 	edit: (req, res) => {
+		const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(422).json({ errors: errors.array() })
+        }
 		return User
 			.findById(req.params.id)
 			.then((user) => {

@@ -1,13 +1,28 @@
 var express = require('express');
 var router = express.Router();
 const userController = require('../controllers/user');
+const { check } = require('express-validator/check');
 
 /* user Router */
 router.get('/', userController.list);
-router.post('/', userController.add);
+router.post('/', [check('full_name').isLength({ min: 2 }),
+                 check('email').isEmail(),
+                 check('dob').isLength({ min: 5 }),
+                 check('phone').isLength({ min: 5 }),
+                 check('address').isLength({ min: 2 }),
+                 check('identity_number').isLength({ min: 5 }),
+                 check('license_number').isLength({ min: 5 })], 
+                 userController.add);
 router.get('/:id/detail', userController.getById);
 router.get('/:id/edit', userController.edit);
-router.put('/:id/update/', userController.update);
+router.put('/:id/update/', [check('full_name').isLength({ min: 2 }),
+                            check('email').isEmail(),
+                            check('dob').isLength({ min: 5 }),
+                            check('phone').isLength({ min: 5 }),
+                            check('address').isLength({ min: 2 }),
+                            check('identity_number').isLength({ min: 5 }),
+                            check('license_number').isLength({ min: 5 })],  
+                            userController.update);
 router.get('/:id/delete', userController.delete);
 
 router.get('/new', (req, res) => {

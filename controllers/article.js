@@ -3,6 +3,7 @@ const Vehicle = require('../models').Vehicle;
 const Image = require('../models').Image;
 const fs = require('fs');
 const to = require('await-to-js').default;
+const { validationResult } = require('express-validator/check');
 
 module.exports = {
     list: (req, res) => {
@@ -37,6 +38,10 @@ module.exports = {
     },
 
     add: (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(422).json({ errors: errors.array() })
+        }
         return Vehicle
             .create({
                 user_id: 1,
@@ -146,6 +151,11 @@ module.exports = {
     },
 
     update: async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(422).json({ errors: errors.array() })
+        }
+
         console.log(req.params.id);
         let newVehicleValue = {
             user_id: 1,
