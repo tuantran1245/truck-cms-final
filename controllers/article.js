@@ -4,8 +4,8 @@ const Image = require('../models').Image;
 const fs = require('fs');
 const to = require('await-to-js').default;
 const { validationResult } = require('express-validator/check');
-//const FroalaEditor = require("../node_modules/froala-editor/js/froala_editor.min.js");
-const { imageUpload }= require("../Utils/uploadImage");
+const FroalaEditor = require("../node_modules/froala-editor/js/froala_editor.min.js");
+const { imageUpload } = require("../Utils/uploadImage");
 
 module.exports = {
     list: (req, res) => {
@@ -281,17 +281,26 @@ module.exports = {
 
     // Image POST handler.
     uploadImage: (req, res) => {
-        imageUpload(req, function (err, data) {
+        FroalaEditor.Image.upload(req, '/public/uploads/photo/', function (err, data) {
 
             if (err) {
-                return res.status(404).end(JSON.stringify(err));
+                console.log(JSON.stringify(err));
+                return res.send(JSON.stringify(err));
             }
-            console.log (JSON.stringify(2, undefined, data));
             res.send(data);
         });
 
+        // imageUpload(req, function (err, data) {
+
+        //     if (err) {
+        //         return res.status(404).end(JSON.stringify(err));
+        //     }
+        //     console.log (JSON.stringify(2, undefined, data));
+        //     res.send(data);
+        // });
+
         // Create folder for uploading files.
-        var filesDir = path.join(path.dirname(require.main.filename), "uploads");
+        var filesDir = path.join(path.dirname(require.main.filename), "/public/uploads/photo/");
 
         if (!fs.existsSync(filesDir)) {
             fs.mkdirSync(filesDir);

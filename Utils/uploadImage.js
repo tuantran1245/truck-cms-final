@@ -40,6 +40,7 @@ function upload(req, callback) {
             return;
         }
 
+        console.log
         hadStreamError = error;
 
         // Cleanup: delete the saved path.
