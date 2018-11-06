@@ -4,6 +4,8 @@ const Image = require('../models').Image;
 const fs = require('fs');
 const to = require('await-to-js').default;
 const { validationResult } = require('express-validator/check');
+//const FroalaEditor = require("../node_modules/froala-editor/js/froala_editor.min.js");
+const { imageUpload }= require("../Utils/uploadImage");
 
 module.exports = {
     list: (req, res) => {
@@ -29,9 +31,12 @@ module.exports = {
                     message: 'Vehicle Not Found'
                 });
             }
-            let image = await Image.findOne({ where: { article_id: article.id } });
-            console.log(image.url);
-            res.render('article/show', { article: article, vehicle: vehicle, image: image });
+
+            res.render('article/show', { article: article, vehicle: vehicle });
+
+            // let image = await Image.findOne({ where: { article_id: article.id } });
+            // console.log(image.url);
+            // res.render('article/show', { article: article, vehicle: vehicle, image: image });
         } catch (error) {
             res.render('error', error);
         }
@@ -102,21 +107,24 @@ module.exports = {
                         content: req.body.content || 'temp default value'
                     })
                     .then((article) => {
-                        //console.log("file name: " + req.file.filename + " " + !req.file);
-                        let imageFileName = req.file.filename || 'placeholder.jpg'
+                        // if (req.file) {
+                        //     //console.log("file name: " + req.file.filename + " " + !req.file);
+                        //     let imageFileName = req.file.filename || 'placeholder.jpg'
 
-                        return Image
-                            .create({
-                                article_id: article.id,
-                                url: '/uploads/photo/' + imageFileName
-                            }).then(() => {
-                                res.redirect('/articles/' + article.id + '/detail')
-                            })
+                        //     return Image
+                        //         .create({
+                        //             article_id: article.id,
+                        //             url: '/uploads/photo/' + imageFileName
+                        //         }).then(() => {
+                        //             res.redirect('/articles/' + article.id + '/detail')
+                        //         })
+                        // } else {
+                        res.redirect('/articles/' + article.id + '/detail');
+                        // }
                     })
             })
             .catch((error) => res.render('error', error))
     },
-
 
     edit: async (req, res) => {
         try {
@@ -132,8 +140,9 @@ module.exports = {
                     message: 'Vehicle Not Found',
                 });
             }
-            let image = await Image.findOne({ where: { article_id: article.id } });
-            res.render('article/edit', { article: article, vehicle: vehicle, image: image });
+            res.render('article/edit', { article: article, vehicle: vehicle });
+            // let image = await Image.findOne({ where: { article_id: article.id } });
+            // res.render('article/edit', { article: article, vehicle: vehicle, image: image });
         } catch (error) {
             res.render('error', error);
         }
@@ -229,24 +238,24 @@ module.exports = {
         if (!article) console.log("article update failed!");
         if (err) console.log("error: " + JSON.stringify(2, undefined, err));
 
-        if (req.file) {
-            if (req.body.old_photo !== '') {
-                await fs.unlink('public/' + `${req.body.old_photo}`);
-            }
-            [err, image] = await to(Image.update({
-                url: '/uploads/photo/' + req.file.filename
-            }, {
-                    where: {
-                        id: req.body.image_id
-                    }
-                }
-            ));
-            if (image) res.redirect('/articles/' + req.body.article_id + '/detail');
-            else console.log("image update failed!");
-            if (err) console.log("error: " + JSON.stringify(2, undefined, err));
-        } else {
-            res.redirect('/articles/' + req.body.article_id + '/detail');
-        };
+        // if (req.file) {
+        //     if (req.body.old_photo !== '') {
+        //         await fs.unlink('public/' + `${req.body.old_photo}`);
+        //     }
+        //     [err, image] = await to(Image.update({
+        //         url: '/uploads/photo/' + req.file.filename
+        //     }, {
+        //             where: {
+        //                 id: req.body.image_id
+        //             }
+        //         }
+        //     ));
+        //     if (image) res.redirect('/articles/' + req.body.article_id + '/detail');
+        //     else console.log("image update failed!");
+        //     if (err) console.log("error: " + JSON.stringify(2, undefined, err));
+        // } else {
+        res.redirect('/articles/' + req.body.article_id + '/detail');
+        // };
     },
 
     delete: (req, res) => {
@@ -268,5 +277,24 @@ module.exports = {
                 })
             })
             .catch((error) => res.render('error', error));
+    },
+
+    // Image POST handler.
+    uploadImage: (req, res) => {
+        imageUpload(req, function (err, data) {
+
+            if (err) {
+                return res.status(404).end(JSON.stringify(err));
+            }
+            console.log (JSON.stringify(2, undefined, data));
+            res.send(data);
+        });
+
+        // Create folder for uploading files.
+        var filesDir = path.join(path.dirname(require.main.filename), "uploads");
+
+        if (!fs.existsSync(filesDir)) {
+            fs.mkdirSync(filesDir);
+        }
     },
 };

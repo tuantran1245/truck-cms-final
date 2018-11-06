@@ -41,4 +41,6 @@ router.get('/new', (req, res) => {
     res.render('article/create');
 });
 
+router.post("/image_upload", articleController.uploadImage);
+
 module.exports = router;
