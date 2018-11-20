@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var articlesRouter = require('./routes/articles');
 var fs = require('fs');
+require('dotenv').config();
 
 // for support method put, delete, and others via form view
 const methodOverride = require('method-override');
@@ -35,6 +36,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/articles', articlesRouter);
 
+//console.log(process.env.test);
 
 app.post('/upload_image', function (req, res) {
 
