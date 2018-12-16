@@ -8,7 +8,7 @@ const { check } = require('express-validator/check');
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		// set uploads directory
-		cb(null, 'public/uploads/photo/')
+		cb(null, 'uploads')
 	},
 	filename: (req, file, cb) => {
 		// save file with current timestamp + user email + file extension
@@ -21,7 +21,7 @@ const upload = multer({storage: storage});
 
 /* article Router */
 router.get('/', articleController.list);
-router.post('/', upload.single('photo'), [check('type').isLength({ min: 2 }).withMessage("Loại xe không hợp lệ"),
+router.post('/', upload.array('photos', 12), [check('type').isLength({ min: 2 }).withMessage("Loại xe không hợp lệ"),
 										  check('brand').isLength({ min: 2 }).withMessage("Thương hiệu không hợp lệ"),
 										  check('model').isLength({ min: 2 }).withMessage("Model xe không hợp lệ"),
 										  check('title').isLength({ min: 2 }).withMessage("Tên bài viết không hợp lệ"),

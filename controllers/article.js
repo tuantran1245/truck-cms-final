@@ -107,20 +107,20 @@ module.exports = {
                         content: req.body.content || 'temp default value'
                     })
                     .then((article) => {
-                        // if (req.file) {
-                        //     //console.log("file name: " + req.file.filename + " " + !req.file);
-                        //     let imageFileName = req.file.filename || 'placeholder.jpg'
+                        if (req.file) {
+                            //console.log("file name: " + req.file.filename + " " + !req.file);
+                            let imageFileName = req.file.filename || 'placeholder.jpg'
 
-                        //     return Image
-                        //         .create({
-                        //             article_id: article.id,
-                        //             url: '/uploads/photo/' + imageFileName
-                        //         }).then(() => {
-                        //             res.redirect('/articles/' + article.id + '/detail')
-                        //         })
-                        // } else {
-                        res.redirect('/articles/' + article.id + '/detail');
-                        // }
+                            return Image
+                                .create({
+                                    article_id: article.id,
+                                    url: '/uploads/' + imageFileName
+                                }).then(() => {
+                                    res.redirect('/articles/' + article.id + '/detail')
+                                })
+                        } else {
+                            console.log("image upload failed!");
+                        }
                     })
             })
             .catch((error) => res.render('error', error))
@@ -280,7 +280,7 @@ module.exports = {
     },
 
     // Image POST handler.
-    uploadImage: (req, res) => {
+    /*uploadImage: (req, res) => {
         FroalaEditor.Image.upload(req, '/public/uploads/photo/', function (err, data) {
 
             if (err) {
@@ -305,5 +305,5 @@ module.exports = {
         if (!fs.existsSync(filesDir)) {
             fs.mkdirSync(filesDir);
         }
-    },
+    },*/
 };
