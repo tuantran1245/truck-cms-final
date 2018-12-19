@@ -107,9 +107,25 @@ module.exports = {
                         content: req.body.content || 'temp default value'
                     })
                     .then((article) => {
-                        if (req.file) {
+                        if (req.files) {
+                            var files = req.files;
+                            console.log("files uploaded: " + files);
+                            for (var i = 0; i < files.length; i++) {
+                                let imageFileName = files[i].filename || 'placeholder.jpg'
+                                console.log("file name: " + imageFileName);
+
+                                Image
+                                    .create({
+                                        article_id: article.id,
+                                        url: '/uploads/' + imageFileName
+                                    }).then(() => {
+                                        if (i >= (files.length - 1)) {
+                                            res.redirect('/articles/' + article.id + '/detail');
+                                        }
+                                    })
+                            }
                             //console.log("file name: " + req.file.filename + " " + !req.file);
-                            let imageFileName = req.file.filename || 'placeholder.jpg'
+                            /*let imageFileName = req.file.filename || 'placeholder.jpg'
 
                             return Image
                                 .create({
@@ -117,7 +133,7 @@ module.exports = {
                                     url: '/uploads/' + imageFileName
                                 }).then(() => {
                                     res.redirect('/articles/' + article.id + '/detail')
-                                })
+                                })*/
                         } else {
                             console.log("image upload failed!");
                         }
