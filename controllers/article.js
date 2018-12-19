@@ -118,12 +118,13 @@ module.exports = {
                                     .create({
                                         article_id: article.id,
                                         url: '/uploads/' + imageFileName
-                                    }).then(() => {
+                                    })/*.then(() => {
                                         if (i >= (files.length - 1)) {
                                             res.redirect('/articles/' + article.id + '/detail');
                                         }
-                                    })
+                                    })*/
                             }
+                            res.redirect('/articles/' + article.id + '/detail');
                             //console.log("file name: " + req.file.filename + " " + !req.file);
                             /*let imageFileName = req.file.filename || 'placeholder.jpg'
 
