@@ -114,8 +114,7 @@ module.exports = {
                                 let imageFileName = files[i].filename || 'placeholder.jpg'
                                 console.log("file name: " + imageFileName);
 
-                                Image
-                                    .create({
+                                Image.create({
                                         article_id: article.id,
                                         url: '/uploads/' + imageFileName
                                     })/*.then(() => {
